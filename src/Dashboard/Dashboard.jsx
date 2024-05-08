@@ -1,8 +1,10 @@
 import React, { useState,useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+    const navigate = useNavigate()
   const [data, setData] = useState({
     title: "",
     description: "",
@@ -58,6 +60,11 @@ function Dashboard() {
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
 
+  const logout =()=>{
+    localStorage.clear()
+    alert('Logout successfull')
+    navigate('/')
+  }
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
     setTodos(storedTodos);
@@ -106,6 +113,8 @@ function Dashboard() {
               </div>
             </Col>
             <Col md={6}>
+            <button className="btn btn-success ms-auto d-flex justify-content-between" onClick={logout}>LogOut</button>
+
             <h3 className="text-center mt-3">TODO LIST</h3>
       <div className="pt-4">
         <div className="input-group ms-5">
@@ -139,6 +148,7 @@ function Dashboard() {
           
         }
       </div>
+
             </Col>
           </Row>
         </Container>

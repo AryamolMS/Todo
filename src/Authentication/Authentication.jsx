@@ -4,7 +4,6 @@ import { Col, Container, Row } from 'react-bootstrap'
 import loginImage from '../images/login.jpg'
 import { auth, provider } from './Config'
 import { signInWithPopup } from 'firebase/auth'
-import Dashboard from '../Dashboard/Dashboard'
 import { useNavigate } from 'react-router-dom'
 
 
